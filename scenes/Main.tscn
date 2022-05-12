@@ -1,0 +1,167 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://DungeonTileset/frames/knight_f_anim.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://scripts/Enemy.cs" type="Script" id=2]
+[ext_resource path="res://scripts/Player.cs" type="Script" id=3]
+[ext_resource path="res://DungeonTileset/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=4]
+[ext_resource path="res://DungeonTileset/frames/big_demon.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://DungeonTileset/frames/ui_heart_empty.png" type="Texture" id=6]
+[ext_resource path="res://DungeonTileset/frames/ui_heart_full.png" type="Texture" id=7]
+[ext_resource path="res://DungeonTileset/frames/ui_heart_half.png" type="Texture" id=8]
+[ext_resource path="res://scripts/GUI.cs" type="Script" id=9]
+[ext_resource path="res://DungeonTileset/frames/coin_anim_f0.png" type="Texture" id=10]
+[ext_resource path="res://instances/Coin.tscn" type="PackedScene" id=11]
+[ext_resource path="res://DungeonTileset/frames/weapon_baton_with_spikes.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=1]
+height = 0.0
+
+[sub_resource type="Animation" id=5]
+resource_name = "Weapon"
+
+[sub_resource type="CapsuleShape2D" id=3]
+height = 10.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, 0 )
+script = ExtResource( 9 )
+
+[node name="Hearts" type="Node2D" parent="CanvasLayer"]
+
+[node name="Heart" type="AnimatedSprite" parent="CanvasLayer/Hearts"]
+position = Vector2( 425, 12.0462 )
+frames = SubResource( 4 )
+
+[node name="Heart2" type="AnimatedSprite" parent="CanvasLayer/Hearts"]
+position = Vector2( 440, 12.0462 )
+frames = SubResource( 4 )
+
+[node name="Heart3" type="AnimatedSprite" parent="CanvasLayer/Hearts"]
+position = Vector2( 455, 12.0462 )
+frames = SubResource( 4 )
+
+[node name="Heart4" type="AnimatedSprite" parent="CanvasLayer/Hearts"]
+position = Vector2( 470, 12.0462 )
+frames = SubResource( 4 )
+
+[node name="Heart5" type="AnimatedSprite" parent="CanvasLayer/Hearts"]
+position = Vector2( 485, 12.0462 )
+frames = SubResource( 4 )
+
+[node name="Heart6" type="AnimatedSprite" parent="CanvasLayer/Hearts"]
+position = Vector2( 500, 12.0462 )
+frames = SubResource( 4 )
+
+[node name="Score" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 465.0
+margin_top = 26.0
+margin_right = 505.0
+margin_bottom = 40.0
+scroll_active = false
+
+[node name="Coin2" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 459, 32.5 )
+texture = ExtResource( 10 )
+
+[node name="Coin" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 454, 27.5 )
+texture = ExtResource( 10 )
+
+[node name="Coin3" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 454.5, 38 )
+texture = ExtResource( 10 )
+
+[node name="0X72DungeonTilesetIiV14" type="Sprite" parent="."]
+position = Vector2( 272, 269 )
+texture = ExtResource( 4 )
+
+[node name="Player" type="KinematicBody2D" parent="." groups=["player"]]
+position = Vector2( 210, 121 )
+script = ExtResource( 3 )
+speed = 10.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 0.75, 0.75 )
+smoothing_enabled = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+frames = ExtResource( 1 )
+animation = "run"
+frame = 1
+speed_scale = 1.5
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0, 3 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+root_node = NodePath("WeaponPosition")
+anims/Weapon = SubResource( 5 )
+
+[node name="WeaponPosition" type="Position2D" parent="Player/AnimationPlayer"]
+position = Vector2( 210, 121 )
+
+[node name="WeaponBatonWithSpikes" type="Sprite" parent="Player/AnimationPlayer/WeaponPosition"]
+texture = ExtResource( 12 )
+
+[node name="Timer" type="Timer" parent="Player"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Enemy" type="KinematicBody2D" parent="." groups=["enemy"]]
+position = Vector2( 335, 169 )
+script = ExtResource( 2 )
+speed = 3.0
+isTakingDamage = false
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Enemy"]
+position = Vector2( 0, -1 )
+frames = ExtResource( 5 )
+animation = "idle"
+frame = 3
+speed_scale = 1.5
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+position = Vector2( 0, 3 )
+shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="Enemy"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Coin" parent="." instance=ExtResource( 11 )]
+
+[node name="Coin2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 306, 134 )
+
+[node name="Coin3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 250, 140 )
+
+[node name="Coin4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 275, 95 )
+
+[node name="Coin5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 225, 75 )
+
+[node name="Coin6" parent="." instance=ExtResource( 11 )]
+position = Vector2( 326, 81 )
+
+[node name="Coin7" parent="." instance=ExtResource( 11 )]
+position = Vector2( 261, 178 )
+
+[node name="Coin8" parent="." instance=ExtResource( 11 )]
+position = Vector2( 370, 180 )
