@@ -36,7 +36,7 @@ public class Character : KinematicBody2D
         if (move.x != 0 && move.y != 0)
             move *= 0.75f;
 
-        animatedSprite.FlipH = FlipH(move.x);
+        Scale = new Vector2(FlipH(move.x), 1);
 
         velocity = move * speed * 10;
         MoveAndSlide(velocity);
@@ -50,15 +50,15 @@ public class Character : KinematicBody2D
             animatedSprite.Animation = "run";
     }
 
-    private bool FlipH(float x)
+    private float FlipH(float x)
     {
         if (x < 0)
-            return true;
+            return -1;
 
         if (x > 0)
-            return false;
+            return 1;
 
-        return animatedSprite.FlipH;
+        return Scale.x;
     }
 
     public void _OnTimerTimeout()

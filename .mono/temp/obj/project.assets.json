@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Godot\\Dungeon Game\\Dungeon Game.csproj",
+      "projectUniqueName": "D:\\Даник\\Projects\\DungeonGame\\Dungeon Game.csproj",
       "projectName": "Dungeon Game",
-      "projectPath": "D:\\Projects\\Godot\\Dungeon Game\\Dungeon Game.csproj",
+      "projectPath": "D:\\Даник\\Projects\\DungeonGame\\Dungeon Game.csproj",
       "packagesPath": "C:\\Users\\Professional\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Godot\\Dungeon Game\\.mono\\temp\\obj\\",
+      "outputPath": "D:\\Даник\\Projects\\DungeonGame\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Professional\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,7 +45,7 @@
     "frameworks": {
       "net472": {
         "targetAlias": "net472",
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

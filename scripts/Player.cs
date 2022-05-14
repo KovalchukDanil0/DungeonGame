@@ -6,6 +6,8 @@ public class Player : Character
 
     public int score;
 
+    private AnimationPlayer animationPlayer;
+
     public override void _Ready()
     {
         Singelton();
@@ -15,7 +17,8 @@ public class Player : Character
     public override void _Process(float delta)
     {
         MoveInit();
-        CollisionInit();
+        Collision();
+        Weapon();
     }
 
     private void Singelton()
@@ -24,25 +27,6 @@ public class Player : Character
             GD.PrintErr("Singelton is not valid");
         else
             instance = this;
-    }
-
-    private void CollisionInit()
-    {
-        int slideCount = GetSlideCount();
-        for (int i = 0; i < slideCount; i++)
-        {
-            Godot.Collections.Array groups = ((Node)GetSlideCollision(i).Collider).GetGroups();
-
-            switch (groups[0])
-            {
-                case "enemy":
-                    PlayerTakeDamage(damage);
-                    break;
-                case "coin":
-                    GD.Print("gg");
-                    break;
-            }
-        }
     }
 
     private void MoveInit()
@@ -54,6 +38,40 @@ public class Player : Character
         };
 
         Move(move);
+    }
+
+    private void Collision()
+    {
+        int slideCount = GetSlideCount();
+        for (int i = 0; i < slideCount; i++)
+        {
+            Node collider = (Node)GetSlideCollision(i).Collider;
+
+            if (collider.IsInGroup("enemy"))
+            {
+                PlayerTakeDamage(damage);
+                return;
+            }
+
+            if (collider.IsInGroup("coin"))
+            {
+                collider.QueueFree();
+                score++;
+                GUI.instance.UpdateScore();
+                return;
+            }
+        }
+    }
+
+    // !!!
+    private void Weapon()
+    {
+        if (Input.IsActionJustPressed("mouse_left"))
+        {
+            animationPlayer = GetNode<AnimationPlayer>("WeaponPosition/AnimationPlayer");
+            animationPlayer.CurrentAnimation = "baton";
+            animationPlayer.Play();
+        }
     }
 
     public void PlayerTakeDamage(int amount)

@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scripts/Coin.cs" type="Script" id=1]
 [ext_resource path="res://DungeonTileset/frames/coin_anim_f0.png" type="Texture" id=2]
 [ext_resource path="res://DungeonTileset/frames/coin_anim_f2.png" type="Texture" id=3]
 [ext_resource path="res://DungeonTileset/frames/coin_anim_f1.png" type="Texture" id=4]
@@ -17,9 +16,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Coin" type="Area2D" groups=["coin"]]
+[node name="Coin" type="RigidBody2D" groups=["coin"]]
 position = Vector2( 297, 166 )
-script = ExtResource( 1 )
+mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 6 )
@@ -28,5 +27,3 @@ shape = SubResource( 6 )
 frames = SubResource( 5 )
 frame = 1
 playing = true
-
-[connection signal="body_entered" from="." to="." method="_OnCoinBodyEntered"]

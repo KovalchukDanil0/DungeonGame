@@ -7,3 +7,12 @@ D:\Projects\Godot\Dungeon Game\.mono\temp\obj\Debug\Dungeon Game.AssemblyInfo.cs
 D:\Projects\Godot\Dungeon Game\.mono\temp\obj\Debug\Dungeon Game.csproj.CoreCompileInputs.cache
 D:\Projects\Godot\Dungeon Game\.mono\temp\obj\Debug\Dungeon Game.dll
 D:\Projects\Godot\Dungeon Game\.mono\temp\obj\Debug\Dungeon Game.pdb
+D:\Даник\Projects\DungeonGame\.mono\temp\bin\Debug\Dungeon Game.dll
+D:\Даник\Projects\DungeonGame\.mono\temp\bin\Debug\Dungeon Game.pdb
+D:\Даник\Projects\DungeonGame\.mono\temp\obj\Debug\Dungeon Game.csproj.AssemblyReference.cache
+D:\Даник\Projects\DungeonGame\.mono\temp\obj\Debug\Dungeon Game.GeneratedMSBuildEditorConfig.editorconfig
+D:\Даник\Projects\DungeonGame\.mono\temp\obj\Debug\Dungeon Game.AssemblyInfoInputs.cache
+D:\Даник\Projects\DungeonGame\.mono\temp\obj\Debug\Dungeon Game.AssemblyInfo.cs
+D:\Даник\Projects\DungeonGame\.mono\temp\obj\Debug\Dungeon Game.csproj.CoreCompileInputs.cache
+D:\Даник\Projects\DungeonGame\.mono\temp\obj\Debug\Dungeon Game.dll
+D:\Даник\Projects\DungeonGame\.mono\temp\obj\Debug\Dungeon Game.pdb
