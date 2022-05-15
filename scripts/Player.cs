@@ -7,11 +7,15 @@ public class Player : Character
     public int score;
 
     private AnimationPlayer animationPlayer;
+    private Weapon weapon;
 
     public override void _Ready()
     {
         Singelton();
         Init();
+
+        weapon = GetNode<Weapon>("AnimatedSprite/WeaponPosition/Area2D");
+        GD.Print(weapon.damage);
     }
 
     public override void _Process(float delta)
@@ -63,12 +67,11 @@ public class Player : Character
         }
     }
 
-    // !!!
     private void Weapon()
     {
         if (Input.IsActionJustPressed("mouse_left"))
         {
-            animationPlayer = GetNode<AnimationPlayer>("WeaponPosition/AnimationPlayer");
+            animationPlayer = GetNode<AnimationPlayer>("AnimatedSprite/WeaponPosition/Area2D/AnimationPlayer");
             animationPlayer.CurrentAnimation = "baton";
             animationPlayer.Play();
         }
