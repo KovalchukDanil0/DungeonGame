@@ -4,8 +4,8 @@ public class GUI : CanvasLayer
 {
 	public static GUI instance;
 
-	private AnimatedSprite[] hearts;
-	private RichTextLabel scoreLabel;
+	AnimatedSprite[] hearts;
+	RichTextLabel scoreLabel;
 
 	public override void _Ready()
 	{
@@ -13,7 +13,7 @@ public class GUI : CanvasLayer
 		Init();
 	}
 
-	private void Singelton()
+	void Singelton()
 	{
 		if (instance == this)
 			GD.PrintErr("Singelton is not valid");
@@ -21,7 +21,7 @@ public class GUI : CanvasLayer
 			instance = this;
 	}
 	
-	private void Init()
+	void Init()
 	{
 		Godot.Collections.Array list = GetNode<Node2D>("Hearts").GetChildren();
 		hearts = new AnimatedSprite[list.Count];

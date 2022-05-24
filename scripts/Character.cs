@@ -9,16 +9,16 @@ public class Character : KinematicBody2D
 
     [Export] public float speed = 1;
 
-    [Export] private float countdownTime = 2;
-    [Export] private bool isTakingDamage = true;
+    [Export] float countdownTime = 2;
+    [Export] bool isTakingDamage = true;
 
-    private Vector2 velocity;
+    Vector2 velocity;
 
-    private Node2D animatedSprite;
+    Node2D animatedSprite;
 
-    private AnimationPlayer animationPlayer;
+    AnimationPlayer animationPlayer;
 
-    private Timer timer;
+    Timer timer;
 
     public void Init()
     {
@@ -54,7 +54,7 @@ public class Character : KinematicBody2D
             animationPlayer.CurrentAnimation = "run";
     }
 
-    private float FlipH(float x)
+    float FlipH(float x)
     {
         if (x < 0)
             return -1;

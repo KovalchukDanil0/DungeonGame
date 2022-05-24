@@ -6,8 +6,8 @@ public class Player : Character
 
     public int score;
 
-    private AnimationPlayer animationPlayer;
-    private Weapon weapon;
+    AnimationPlayer animationPlayer;
+    Weapon weapon;
 
     public override void _Ready()
     {
@@ -25,7 +25,7 @@ public class Player : Character
         Weapon();
     }
 
-    private void Singelton()
+    void Singelton()
     {
         if (instance == this)
             GD.PrintErr("Singelton is not valid");
@@ -33,7 +33,7 @@ public class Player : Character
             instance = this;
     }
 
-    private void MoveInit()
+    void MoveInit()
     {
         Vector2 move = new Vector2()
         {
@@ -44,7 +44,7 @@ public class Player : Character
         Move(move);
     }
 
-    private void Collision()
+    void Collision()
     {
         int slideCount = GetSlideCount();
         for (int i = 0; i < slideCount; i++)
@@ -67,7 +67,7 @@ public class Player : Character
         }
     }
 
-    private void Weapon()
+    void Weapon()
     {
         if (Input.IsActionJustPressed("mouse_left"))
         {
